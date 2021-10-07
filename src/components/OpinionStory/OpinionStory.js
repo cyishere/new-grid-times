@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
@@ -29,6 +30,15 @@ const Link = styled.a`
   &:last-child {
     padding-bottom: 0;
   }
+
+  @media ${QUERIES.tabletOnly} {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:not(:last-child) {
+      border-bottom: none;
+    }
+  }
 `;
 
 const Wrapper = styled.article`
@@ -43,6 +53,12 @@ const Avatar = styled.img`
   object-fit: cover;
   float: right;
   margin-left: 16px;
+
+  @media ${QUERIES.tabletOnly} {
+    float: none;
+    margin-left: 0;
+    margin-bottom: 8px;
+  }
 `;
 
 const AuthorName = styled.p`

@@ -1,3 +1,7 @@
+ℹ️ This is my solution of [CSS for JS Devs](https://css-for-js.dev)' exercise.
+
+---
+
 # New Grid Times — Module 7 workshop
 
 In this workshop, our goal is to build a sophisticated, responsive grid layout for an online newspaper, the New Grid Times:

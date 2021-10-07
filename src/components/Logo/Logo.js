@@ -22,7 +22,6 @@ const Wrapper = styled.div`
 const Link = styled.a`
   font-family: var(--font-family-logo);
   font-size: 3rem;
-  line-height: 1.3;
 
   @media ${QUERIES.tabletAndUp} {
     font-size: 4rem;

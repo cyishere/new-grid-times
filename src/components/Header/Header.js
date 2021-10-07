@@ -10,7 +10,7 @@ import Button from "../Button";
 
 const Header = () => {
   return (
-    <Wrapper>
+    <header>
       <SuperHeader>
         <Row>
           <ActionGroup>
@@ -29,29 +29,23 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
+        <DesktopActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </DesktopActionGroup>
         <Logo />
-      </MainHeader>
-      <RightActionWrapper>
-        <RightAction>
+        <SubscribeWrapper>
           <Button>Subscribe</Button>
-          <Login>Already a subscriber?</Login>
-        </RightAction>
-      </RightActionWrapper>
-    </Wrapper>
+          <SubLink>Already a subscriber?</SubLink>
+        </SubscribeWrapper>
+      </MainHeader>
+    </header>
   );
 };
-
-const Wrapper = styled.header`
-  @media ${QUERIES.laptopAndUp} {
-    display: grid;
-    grid-template-columns: 1fr 500px 1fr;
-    align-items: baseline;
-    margin-top: 16px;
-    margin-bottom: 72px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-`;
 
 const SuperHeader = styled.div`
   padding: 16px 0;
@@ -59,24 +53,13 @@ const SuperHeader = styled.div`
   color: white;
 
   @media ${QUERIES.laptopAndUp} {
-    color: var(--color-gray-900);
-    background: none;
+    display: none;
   }
 `;
 
 const Row = styled(MaxWidthWrapper)`
   display: flex;
   justify-content: space-between;
-
-  @media ${QUERIES.laptopAndUp} {
-    justify-content: flex-start;
-    padding-left: 0;
-    padding-right: 0;
-
-    & > div:last-child {
-      display: none;
-    }
-  }
 `;
 
 const ActionGroup = styled.div`
@@ -89,6 +72,14 @@ const ActionGroup = styled.div`
   */
   svg {
     display: block;
+  }
+`;
+
+const DesktopActionGroup = styled(ActionGroup)`
+  display: none;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
   }
 `;
 
@@ -105,34 +96,34 @@ const MainHeader = styled(MaxWidthWrapper)`
   }
 
   @media ${QUERIES.laptopAndUp} {
-    margin-top: 0;
-    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-content: revert;
+    jusitfy-items: start;
+    margin-top: 16px;
   }
 `;
 
-const RightActionWrapper = styled.div`
+const SubscribeWrapper = styled.div`
   display: none;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
 
   @media ${QUERIES.laptopAndUp} {
-    display: flex;
+    justify-self: end;
+    display: revert;
+    position: relative;
   }
 `;
 
-const RightAction = styled.div`
+const SubLink = styled.a`
+  position: absolute;
+  width: 100%;
   text-align: center;
-`;
-
-const Login = styled.a`
+  margin-top: 8px;
   font-size: 0.875rem;
   font-style: italic;
   color: var(--color-gray-900);
   text-decoration: underline;
-  line-height: 1.6;
-  display: inline-block;
-  margin-top: 8px;
 `;
 
 export default Header;
